@@ -27,7 +27,7 @@ def main():
     plt.plot(t, array_of_sum_amounts[i])
 
   plt.ylim((0, 1200000))
-  plt.title("10k certificate + 10k TSMC stock  per month")
+  plt.title("10k CD + 10k TSMC stock  per month")
 
   plt.show()
 
