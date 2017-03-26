@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def main():
   cycles = 36 # 3 years
-  N = 50 # sampling 100 lines
+  N = 50 # sampling 50 lines
 
   # Save 10k per month into certificate deposite (Assuming APR = 1.115%)
   saving_item = Item(0.0, ConstantGrowthF(1.000915), ConstantGrowthF(10000.0))
