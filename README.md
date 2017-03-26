@@ -20,6 +20,7 @@ pip install -r requirments
 - 執行 main.py
 
 python taiwan_50_main.py
+
 python tsmc_main.py
 
 ## Demo:
