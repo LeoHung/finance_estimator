@@ -6,22 +6,14 @@ def main():
   cycles = 36 # 3 years
   N = 50 # sampling 100 lines
 
-  # saving account
-  saving_item = Item(30000.0, ConstantGrowthF(1.00083), ConstantGrowthF(0.0))
+  # Save 10k per month into certificate deposite (Assuming APR = 1.115%)
+  saving_item = Item(0.0, ConstantGrowthF(1.000915), ConstantGrowthF(10000.0))
 
-  # GOOG stocks
-  goog_growth = LoadNormalGrowthFFromPath("data/goog.p")
-  goog_item = Item(12216.45, goog_growth, ConstantGrowthF(800.0))
+  # Buy 10k taiwan 50 etf per month.
+  taiwan_50_growthf = LoadNormalGrowthFFromPath("data/taiwan50.p")
+  taiwan_50_item = Item(0.0, taiwan_50_growthf, ConstantGrowthF(10000.0))
 
-  # ETF - VOO
-  voo_growth = LoadNormalGrowthFFromPath("data/voo.p")
-  voo_item = Item(860.0, voo_growth, ConstantGrowthF(2000.0))
-
-  # ETF - VDC
-  vdc_growth = LoadNormalGrowthFFromPath("data/vdc.p")
-  vdc_item = Item(0.0, vdc_growth, ConstantGrowthF(0.0))
-
-  composite = Composite([saving_item, goog_item, voo_item, vdc_item])
+  composite = Composite([saving_item, taiwan_50_item])
 
   array_of_sum_amounts = []
   for i in xrange(N):
