@@ -1,6 +1,6 @@
 # Finance Estimator
 
-![demo](estimation.jpg?raw=true "Demo")
+![demo](estimation.png?raw=true "Demo")
 
 ## 免責聲明:
 
