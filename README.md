@@ -29,3 +29,8 @@ main.py 會產生 50 條模擬的總資產成長圖，x軸為週期，y軸為資
 計三年內資產總額量及其可能性。
 
 模擬曲線數越集中的範圍，代表其預測機率越高。
+
+## 資料來源：
+
+台灣銀行新臺幣存(放)款牌告利率 (http://rate.bot.com.tw/twd?Lang=zh-TW)
+Yahoo Finance. (http://finance.yahoo.com/quote/0050.TW?ltr=1)
