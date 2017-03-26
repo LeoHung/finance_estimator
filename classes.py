@@ -14,13 +14,16 @@ class NormalGrowthF:
   def __init__(self, history):
     self.mean = np.mean(history)
     self.std = np.std(history)
-  def call(self, i):
+  def call(self):
     return numpy.random.normal(self.mean, self.std)
+
+def LoadNormalGrowthFFromPath(path):
+  return NormalGrowthF(LoadGrowthFromHistory(LoadHistoryPrices(path)))
 
 class ConstantGrowthF:
   def __init__(self, constant):
     self.constant = constant
-  def call(self, i):
+  def call(self):
     return self.constant
 
 class Item:
@@ -36,7 +39,7 @@ class Item:
     amounts = []
     amount = self.init_amount
     for i in xrange(cycles):
-      amount = self.g_f(i) * amount + self.i_f(i)
+      amount = self.g_f.call() * amount + self.i_f.call()
       amounts.append(amount)
     return amounts
 

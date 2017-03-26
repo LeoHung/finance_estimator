@@ -1,25 +1,25 @@
-from classes import Item, NormalGrowthF, ConstantGrowthF, LoadGrowthFromHistory, LoadHistoryPrices, Composite
+from classes import Item, NormalGrowthF, ConstantGrowthF, Composite, LoadNormalGrowthFFromPath
 import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
   cycles = 36 # 3 years
-  N = 100 # sampling 100 lines
+  N = 50 # sampling 100 lines
 
   # saving account
-  saving_item = Item(30000.0, ConstantGrowthF(1.00083).call, ConstantGrowthF(0.0).call)
+  saving_item = Item(30000.0, ConstantGrowthF(1.00083), ConstantGrowthF(0.0))
 
   # GOOG stocks
-  goog_growth = NormalGrowthF(LoadGrowthFromHistory(LoadHistoryPrices("data/goog.p")))
-  goog_item = Item(12216.45, goog_growth.call, ConstantGrowthF(800.0).call)
+  goog_growth = LoadNormalGrowthFFromPath("data/goog.p")
+  goog_item = Item(12216.45, goog_growth, ConstantGrowthF(800.0))
 
   # ETF - VOO
-  voo_growth = NormalGrowthF(LoadGrowthFromHistory(LoadHistoryPrices("data/voo.p")))
-  voo_item = Item(860.0, voo_growth.call, ConstantGrowthF(2000.0).call)
+  voo_growth = LoadNormalGrowthFFromPath("data/voo.p")
+  voo_item = Item(860.0, voo_growth, ConstantGrowthF(2000.0))
 
   # ETF - VDC
-  vdc_growth = NormalGrowthF(LoadGrowthFromHistory(LoadHistoryPrices("data/vdc.p")))
-  vdc_item = Item(0.0, vdc_growth.call, ConstantGrowthF(0.0).call)
+  vdc_growth = LoadNormalGrowthFFromPath("data/vdc.p")
+  vdc_item = Item(0.0, vdc_growth, ConstantGrowthF(0.0))
 
   composite = Composite([saving_item, goog_item, voo_item, vdc_item])
 
