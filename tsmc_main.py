@@ -9,11 +9,11 @@ def main():
   # Save 10k per month into certificate deposite (Assuming APR = 1.115%)
   saving_item = Item(0.0, ConstantGrowthF(1.000915), ConstantGrowthF(10000.0))
 
-  # Buy 10k taiwan 50 etf per month.
-  taiwan_50_growthf = LoadNormalGrowthFFromPath("data/taiwan50.p")
-  taiwan_50_item = Item(0.0, taiwan_50_growthf, ConstantGrowthF(10000.0))
+  # Buy 10k tsmc per month.
+  tsmc_growthf = LoadNormalGrowthFFromPath("data/tsmc.p")
+  tsmc_item = Item(0.0, tsmc_growthf, ConstantGrowthF(10000.0))
 
-  composite = Composite([saving_item, taiwan_50_item])
+  composite = Composite([saving_item, tsmc_item])
 
   array_of_sum_amounts = []
   for i in xrange(N):
@@ -25,6 +25,9 @@ def main():
   # Show Matplot
   for i in xrange(N):
     plt.plot(t, array_of_sum_amounts[i])
+
+  plt.ylim((0, 1200000))
+  plt.title("10k certificate + 10k TSMC stock  per month")
 
   plt.show()
 
