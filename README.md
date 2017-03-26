@@ -13,9 +13,11 @@
 ## 使用方式：
 
 - 請先安裝 numpy 和 matplotlib
+
 pip install -r requirments
 
 - 執行 main.py
+
 python main.py
 
 ## Demo:
