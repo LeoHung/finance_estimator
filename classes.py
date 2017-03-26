@@ -1,6 +1,9 @@
 import numpy as np
 import numpy.random
 
+def LoadHistoryPrices(path):
+  return [price for price in reversed([float(l) for l in open(path)])]
+
 def LoadGrowthFromHistory(history_prices):
   growth_rates = []
   for i in xrange(len(history_prices) - 1):
@@ -29,7 +32,7 @@ class Item:
     self.i_f = i_f
 
   # Next cycle amount = this cycle amount * growth rate + delta increase.
-  def run(self, cycles):
+  def Run(self, cycles):
     amounts = []
     amount = self.init_amount
     for i in xrange(cycles):
@@ -49,8 +52,8 @@ class Composite:
       sum_amounts.append(s)
     return sum_amounts
 
-  def run(self, cycles):
+  def Run(self, cycles):
     array_of_amounts = []
     for item in self.items:
-      array_of_amounts.append(item.run(cycles))
+      array_of_amounts.append(item.Run(cycles))
     return self.Sum(array_of_amounts)
